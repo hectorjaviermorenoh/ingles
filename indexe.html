@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frases Inglés - Español</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; font-family: sans-serif; background-color: #f4f4f4; }
+    .carousel { height: 100vh; display: flex; flex-direction: column; overflow-y: scroll; scroll-snap-type: y mandatory; }
+    .slide { scroll-snap-align: start; flex-shrink: 0; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; }
+    .english { flex: 1; display: flex; justify-content: center; align-items: flex-end; font-size: 4rem; color: #1a1a1a; text-align: center; }
+    .spanish { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; font-size: 2.5rem; color: #333; text-align: center; }
+    .pronunciation { font-size: 2.5rem; color: #666; margin-top: 20px; }
+    button { font-size: 1.2rem; padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+  
+    <div class="slide">
+      <div class="english">slice()</div>
+      <div class="spanish">
+        Sirve para extraer una porción de un string o array, sin modificar el original
+        <div class="pronunciation">/du nɑːt tʌʧ mi/</div>
+        <button onclick="speak('sirve para extraer')">🔊 Escuchar</button>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = 'es-CO';
+      window.speechSynthesis.speak(msg);
+    }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registrado', reg))
+        .catch(err => console.log('Error al registrar Service Worker', err));
+    }
+  </script>
+</body>
+</html>
