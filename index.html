@@ -6,20 +6,76 @@
   <title>Frases Inglés - Español</title>
   <link rel="manifest" href="manifest.json">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { height: 100%; font-family: sans-serif; background-color: #f4f4f4; }
-    .carousel { height: 100vh; display: flex; flex-direction: column; overflow-y: scroll; scroll-snap-type: y mandatory; }
-    .slide { scroll-snap-align: start; flex-shrink: 0; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; }
-    .english { flex: 1; display: flex; justify-content: center; align-items: flex-end; font-size: 4rem; color: #1a1a1a; text-align: center; }
-    .spanish { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; font-size: 2.5rem; color: #333; text-align: center; }
-    .pronunciation { font-size: 2.5rem; color: #666; margin-top: 20px; }
-    button { font-size: 1.2rem; padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: sans-serif;
+  background-color: #f4f4f4;
+}
+
+.carousel {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.english, .spanish {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  overflow-y: auto;
+  text-align: center;
+  word-break: break-word;
+}
+
+.english {
+  color: #1a1a1a;
+  font-size: calc(3rem + 2vw);
+}
+
+.spanish {
+  flex-direction: column;
+  color: #333;
+  font-size: calc(1.5rem + 1.5vw);
+}
+
+.pronunciation {
+  font-size: calc(1.5rem + 1.2vw);
+  color: #666;
+  margin-top: 20px;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
   <div class="carousel">
 
-       <div class="slide">
+    <div class="slide">
       <div class="english">Tell me about yourself.</div>
       <div class="spanish">
         Háblame de ti.
@@ -27,7 +83,7 @@
         <button onclick="speak('Tell me about yourself.')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <div class="slide">
       <div class="english">I’m a backend developer. I work with Java and Go.</div>
       <div class="spanish">
@@ -36,7 +92,7 @@
         <button onclick="speak('I’m a backend developer. I work with Java and Go.')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <!-- Diálogo 2: Experiencia -->
     <div class="slide">
       <div class="english">Do you have experience with microservices?</div>
@@ -46,7 +102,7 @@
         <button onclick="speak('Do you have experience with microservices?')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <div class="slide">
       <div class="english">Yes, I do. I used Spring Boot and Docker.</div>
       <div class="spanish">
@@ -55,7 +111,7 @@
         <button onclick="speak('Yes, I do. I used Spring Boot and Docker.')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <!-- Diálogo 3: Trabajo en equipo -->
     <div class="slide">
       <div class="english">Do you work well in a team?</div>
@@ -65,7 +121,7 @@
         <button onclick="speak('Do you work well in a team?')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <div class="slide">
       <div class="english">Yes, I do. I used Scrum and Jira.</div>
       <div class="spanish">
@@ -74,7 +130,7 @@
         <button onclick="speak('Yes, I do. I used Scrum and Jira.')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <!-- Diálogo 4: Fortalezas -->
     <div class="slide">
       <div class="english">What are your strengths?</div>
@@ -84,7 +140,7 @@
         <button onclick="speak('What are your strengths?')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <div class="slide">
       <div class="english">I’m responsible and proactive. I learn fast.</div>
       <div class="spanish">
@@ -93,7 +149,7 @@
         <button onclick="speak('I’m responsible and proactive. I learn fast.')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <!-- Diálogo 5: Inglés -->
     <div class="slide">
       <div class="english">How is your English?</div>
@@ -103,7 +159,7 @@
         <button onclick="speak('How is your English?')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
     <div class="slide">
       <div class="english">I understand technical English. I’m improving every day.</div>
       <div class="spanish">
@@ -121,7 +177,7 @@
         <button onclick="speak('Do not touch me.')">🔊 Escuchar</button>
       </div>
     </div>
-    
+
 
   </div>
   <script>
