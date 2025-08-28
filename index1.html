@@ -1,80 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frases Inglés - Español</title>
   <link rel="manifest" href="manifest.json">
   <style>
-
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body, html {
-  height: 100%;
-  font-family: sans-serif;
-  background-color: #f4f4f4;
-}
+    body, html {
+      height: 100%;
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+    }
 
-.carousel {
-  height: 95vh;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
+    /* --- NAVBAR --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1000;
+    }
 
-.slide {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+    .menu-btn {
+      font-size: 15px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
 
-.english, .spanish {
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  overflow-y: auto;
-  text-align: center;
-  word-break: break-word;
-}
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+    }
 
-.english {
-  color: #1a1a1a;
-  font-size: calc(3rem + 2vw);
-}
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
 
-.spanish {
-  flex-direction: column;
-  color: #333;
-  font-size: calc(1.5rem + 1.5vw);
-  padding-bottom: 5%;
+    .menu a:hover {
+      background: #f4f4f4;
+    }
 
-}
+    .menu.show {
+      display: flex;
+    }
 
-.pronunciation {
-  font-size: calc(1.5rem + 1.2vw);
-  color: #666;
-  margin-top: 20px;
-}
+    /* --- CONTENIDO --- */
+    .carousel {
+      margin-top: 20px; /* dejar espacio para la barra */
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
 
-button {
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-}
+    .slide {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
+    .english, .spanish {
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      overflow-y: auto;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    .english {
+      color: #1a1a1a;
+      font-size: calc(3rem + 2vw);
+    }
+
+    .spanish {
+      flex-direction: column;
+      color: #333;
+      font-size: calc(1rem + 1.5vw);
+      padding-bottom: 5%;
+    }
+
+    .pronunciation {
+      font-size: calc(1.5rem + 1.2vw);
+      color: #666;
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Barra superior con menú hamburguesa -->
+  <div class="navbar" style="
+">
+    <button class="menu-btn" onclick="toggleMenu()" style="padding-top: 0px;padding-bottom: 0px;margin-top: 0px;">☰</button>
+    <div class="menu" id="menu">
+      <a href="index1.html">Página 1</a>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
   <div class="carousel">
 
     <div class="slide">
@@ -208,18 +263,30 @@ button {
     </div>
 
 
+
+
+    <!-- ... resto de slides ... -->
+
   </div>
+
   <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
     function speak(text) {
       const msg = new SpeechSynthesisUtterance(text);
       msg.lang = 'en-US';
       window.speechSynthesis.speak(msg);
     }
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
         .then(reg => console.log('Service Worker registrado', reg))
         .catch(err => console.log('Error al registrar Service Worker', err));
     }
   </script>
-</body>
-</html>
+
+
+<div></div>
+</body><div></div></html>
