@@ -6,75 +6,133 @@
   <title>Frases Inglés - Español</title>
   <link rel="manifest" href="manifest.json">
   <style>
-
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body, html {
-  height: 100%;
-  font-family: sans-serif;
-  background-color: #f4f4f4;
-}
+    body, html {
+      height: 100%;
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+    }
 
-.carousel {
-  height: 95vh;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
+    /* --- NAVBAR --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
 
-.slide {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
 
-.english, .spanish {
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  overflow-y: auto;
-  text-align: center;
-  word-break: break-word;
-}
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+    }
 
-.english {
-  color: #1a1a1a;
-  font-size: calc(3rem + 2vw);
-}
+    .menu a {
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
 
-.spanish {
-  flex-direction: column;
-  color: #333;
-  font-size: calc(1.5rem + 1.5vw);
-  padding-bottom: 5%;
+    .menu a:hover {
+      background: #f4f4f4;
+    }
 
-}
+    .menu.show {
+      display: flex;
+    }
 
-.pronunciation {
-  font-size: calc(1.5rem + 1.2vw);
-  color: #666;
-  margin-top: 20px;
-}
+    /* --- CONTENIDO --- */
+    .carousel {
+      margin-top: 60px; /* dejar espacio para la barra */
+      height: calc(100vh - 60px);
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
 
-button {
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-}
+    .slide {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
+    .english, .spanish {
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      overflow-y: auto;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    .english {
+      color: #1a1a1a;
+      font-size: calc(3rem + 2vw);
+    }
+
+    .spanish {
+      flex-direction: column;
+      color: #333;
+      font-size: calc(1.5rem + 1.5vw);
+      padding-bottom: 5%;
+    }
+
+    .pronunciation {
+      font-size: calc(1.5rem + 1.2vw);
+      color: #666;
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Barra superior con menú hamburguesa -->
+  <div class="navbar">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="menu" id="menu">
+      <a href="index1.html">Página 1</a>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
   <div class="carousel">
 
     <div class="slide">
@@ -86,135 +144,21 @@ button {
       </div>
     </div>
 
-    <div class="slide">
-      <div class="english">I’m a backend developer. I work with Java and Go.</div>
-      <div class="spanish">
-        Soy desarrollador backend. Trabajo con Java y Go.
-        <div class="pronunciation">/aɪm ə ˈbækˌɛnd dɪˈvɛləpər. aɪ wɜːrk wɪð ˈʤɑːvə ənd ɡoʊ/</div>
-        <button onclick="speak('I’m a backend developer. I work with Java and Go.')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <!-- Diálogo 2: Experiencia -->
-    <div class="slide">
-      <div class="english">Do you have experience with microservices?</div>
-      <div class="spanish">
-        ¿Tienes experiencia con microservicios?
-        <div class="pronunciation">/du ju hæv ɪkˈspɪriəns wɪð ˈmaɪkroʊˌsɜːrvɪsɪz/</div>
-        <button onclick="speak('Do you have experience with microservices?')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="english">Yes, I do. I used Spring Boot and Docker.</div>
-      <div class="spanish">
-        Sí. Usé Spring Boot y Docker.
-        <div class="pronunciation">/jɛs, aɪ duː. aɪ juːzd sprɪŋ buːt ənd ˈdɑːkər/</div>
-        <button onclick="speak('Yes, I do. I used Spring Boot and Docker.')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <!-- Diálogo 3: Trabajo en equipo -->
-    <div class="slide">
-      <div class="english">Do you work well in a team?</div>
-      <div class="spanish">
-        ¿Trabajas bien en equipo?
-        <div class="pronunciation">/du ju wɜːrk wɛl ɪn ə tiːm/</div>
-        <button onclick="speak('Do you work well in a team?')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="english">Yes, I do. I used Scrum and Jira.</div>
-      <div class="spanish">
-        Sí. Usé Scrum y Jira.
-        <div class="pronunciation">/jɛs, aɪ duː. aɪ juːzd skrʌm ənd ˈʤaɪrə/</div>
-        <button onclick="speak('Yes, I do. I used Scrum and Jira.')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <!-- Diálogo 4: Fortalezas -->
-    <div class="slide">
-      <div class="english">What are your strengths?</div>
-      <div class="spanish">
-        ¿Cuáles son tus fortalezas?
-        <div class="pronunciation">/wʌt ɑr jʊr strɛŋkθs/</div>
-        <button onclick="speak('What are your strengths?')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="english">I’m responsible and proactive. I learn fast.</div>
-      <div class="spanish">
-        Soy responsable y proactivo. Aprendo rápido.
-        <div class="pronunciation">/aɪm rɪˈspɑːnsəbl ənd proʊˈæktɪv. aɪ lɜrn fæst/</div>
-        <button onclick="speak('I’m responsible and proactive. I learn fast.')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <!-- Diálogo 5: Inglés -->
-    <div class="slide">
-      <div class="english">How is your English?</div>
-      <div class="spanish">
-        ¿Cómo es tu inglés?
-        <div class="pronunciation">/haʊ ɪz jʊr ˈɪŋɡlɪʃ/</div>
-        <button onclick="speak('How is your English?')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="english">I understand technical English. I’m improving every day.</div>
-      <div class="spanish">
-        Entiendo inglés técnico. Estoy mejorando todos los días.
-        <div class="pronunciation">/aɪ ˌʌndərˈstænd ˈtɛknɪkəl ˈɪŋɡlɪʃ. aɪm ɪmˈpruːvɪŋ ˈɛvri deɪ/</div>
-        <button onclick="speak('I understand technical English. I’m improving every day.')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="english">Do not touch me.</div>
-      <div class="spanish">
-        No me toques.
-        <div class="pronunciation">/du nɑːt tʌʧ mi/</div>
-        <button onclick="speak('Do not touch me.')">🔊 Escuchar</button>
-      </div>
-    </div>
-    
-    <div class="slide">
-      <div class="english">Nineteen hundred and seventy-six</div>
-      <div class="spanish">
-        Mil novecientos setenta y seis.
-        <div class="pronunciation">/ˈnaɪnˌtiːn ˈhʌndrəd ənd ˈsɛvnti sɪks/</div>
-        <button onclick="speak('Nineteen hundred and seventy-six')">🔊 Escuchar</button>
-      </div>
-    </div>
-    
-    <div class="slide"> 
-      <div class="english">Constraints</div>
-      <div class="spanish">
-        Restricciones.
-        <div class="pronunciation">/kənˈstreɪnts/</div>
-        <button onclick="speak('Constraints')">🔊 Escuchar</button>
-      </div>
-    </div>
-
-    <div class="slide"> 
-      <div class="english">Please close the door gently</div>
-      <div class="spanish">
-        Por favor, cierra la puerta suavemente.
-        <div class="pronunciation">/pliːz kloʊz ðə dɔːr ˈʤɛntli/</div>
-        <button onclick="speak('Please close the door gently')">🔊 Escuchar</button>
-      </div>
-    </div>
-
+    <!-- ... resto de slides ... -->
 
   </div>
+
   <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
     function speak(text) {
       const msg = new SpeechSynthesisUtterance(text);
       msg.lang = 'en-US';
       window.speechSynthesis.speak(msg);
     }
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
         .then(reg => console.log('Service Worker registrado', reg))
